@@ -1321,6 +1321,9 @@
                 <div class="scrolling-logos flex whitespace-nowrap">
                     <!-- Duplicate logos for seamless looping -->
                     <div class="inline-flex items-center space-x-16 px-8">
+                        <img src="Images/queen.png" alt="q" class="client-logo h-10 ">
+                        <img src="Images/nkdapparel.png" alt="nk" class="client-logo h-10 ">
+                        <img src="Images/petiho.webp" alt="petio" class="client-logo h-10 ">
                         <img src="Images/brand1_Batiste_logo.jpeg" alt="Batiste" class="client-logo h-12 ">
                         <img src="Images/brand2_brunaebody.png" alt="Brunae Body" class="client-logo h-10 ">
                         <img src="Images/brand3_ciroa.png" alt="Ciroa" class="client-logo h-10 ">
@@ -1520,7 +1523,7 @@
                         <div class="form-input-glow"></div>
                     </div>
                     <div class="text-center">
-                        <a href="mailto:aipixelbypixel@gmail.com?subject=Service%20Inquiry%20-%20AI%20Content%20Creation&body=Hello%20Pixel%20By%20Pixel%20Team,%0A%0AI%20am%20interested%20in%20your%20AI%20content%20creation%20services.%20I%20would%20like%20to%20learn%20more%20about:%0A%0A%E2%9C%85%20AI-Powered%20Content%20Creation%0A%E2%9C%85%20AI-Powered%20Branding%0A%E2%9C%85%20UI/UX%20Design%0A%E2%9C%85%20Digital%20Strategy%0A%0APlease%20provide%20me%20with%20more%20information%20and%20a%20tailored%20quote%20for%20my%20project.%0A%0AThank%20you!%0A%0ABest%20regards" class="submit-button-enhanced group inline-block w-full sm:w-auto">
+                        <a id="contact-button" href="javascript:void(0)" class="submit-button-enhanced group inline-block w-full sm:w-auto">
                             <span class="relative z-10">Send Message</span>
                             <div class="submit-button-glow"></div>
                             <div class="submit-button-particles">
@@ -1551,7 +1554,7 @@
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
         <div class="relative max-w-4xl w-full">
-            <button id="close-lightbox" class="absolute -top-16 right-0 text-white text-3xl focus:outline-none">
+            <button id="close-lightbox" class="absolute top-0 right-0 text-white text-3xl p-4 focus:outline-none hover:text-gray-300 transition-colors">
                 <i class="fas fa-times"></i>
             </button>
             <img id="lightbox-image" src="" alt="" class="w-full max-h-screen object-contain">
@@ -1669,6 +1672,33 @@
             }
             
             lastScrollY = window.scrollY;
+        });
+        
+        // Contact form confirmation
+        const contactButton = document.getElementById('contact-button');
+        const buttonText = contactButton.querySelector('span');
+        const originalText = buttonText.textContent;
+        
+        contactButton.addEventListener('click', () => {
+            // Change button text to "Sending..."
+            buttonText.textContent = "Sending...";
+            
+            // Disable the button to prevent multiple clicks
+            contactButton.style.pointerEvents = 'none';
+            
+            // Wait for 3 seconds
+            setTimeout(() => {
+                // Restore button functionality
+                contactButton.style.pointerEvents = 'auto';
+                
+                // Show confirmation dialog
+                if (confirm('We would appreciate it if you could email Pixel By Pixel again for confirmation.')) {
+                    window.location.href = "mailto:aipixelbypixel@gmail.com?subject=Service%20Inquiry%20-%20AI%20Content%20Creation&body=Hello%20Pixel%20By%20Pixel%20Team,%0A%0AI%20am%20interested%20in%20your%20AI%20content%20creation%20services.%20I%20would%20like%20to%20learn%20more%20about:%0A%0A%E2%9C%85%20AI-Powered%20Content%20Creation%0A%E2%9C%85%20AI-Powered%20Branding%0A%E2%9C%85%20UI/UX%20Design%0A%E2%9C%85%20Digital%20Strategy%0A%0APlease%20provide%20me%20with%20more%20information%20and%20a%20tailored%20quote%20for%20my%20project.%0A%0AThank%20you!%0A%0ABest%20regards";
+                }
+                
+                // Restore original button text
+                buttonText.textContent = originalText;
+            }, 3000);
         });
     </script>
 </body>
